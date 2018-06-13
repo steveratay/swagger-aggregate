@@ -1,6 +1,8 @@
-FROM java:8
-VOLUME /tmp
-ADD /target/swagger-aggregate-0.1.0.jar opt/app.jar
-ENV JAVA_OPTS=""
+FROM openjdk:8-jdk-alpine
 EXPOSE 8080
-ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar opt/app.jar" ]
+ADD maven/swagger-aggregate-*.jar /opt/swagger-aggregate.jar
+RUN sh -c 'touch /opt/swagger-aggregate.jar' && \
+    addgroup -S appuser && \
+    adduser -S -g appuser appuser
+USER appuser
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-Xmx512m", "-jar", "/opt/swagger-aggregate.jar"]

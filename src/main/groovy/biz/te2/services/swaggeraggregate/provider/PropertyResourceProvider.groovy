@@ -1,6 +1,5 @@
-package com.swagger.aggregate.provider
+package biz.te2.services.swaggeraggregate.provider
 
-import com.swagger.aggregate.config.SwaggerServicesConfig
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Primary
 import org.springframework.stereotype.Controller
@@ -11,7 +10,7 @@ import springfox.documentation.swagger.web.SwaggerResourcesProvider
 @Primary
 class PropertyResourceProvider implements SwaggerResourcesProvider {
     @Autowired
-    private SwaggerServicesConfig config
+    private biz.te2.services.swaggeraggregate.config.SwaggerServicesConfig config
 
     /**
      * Build and return list of Swagger Resources (i.e. each microservice api-docs info)

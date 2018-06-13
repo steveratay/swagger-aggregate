@@ -1,4 +1,4 @@
-package com.swagger.aggregate.config
+package biz.te2.services.swaggeraggregate.config
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Configuration

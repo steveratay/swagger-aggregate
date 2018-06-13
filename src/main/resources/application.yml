@@ -1,20 +1,15 @@
-# pointing at Swagger's petstore docs so the example has some content
 documentation:
   swagger:
     services:
       -
-        name: Pet Service
-        url: http://petstore.swagger.io/v2/swagger.json
-        version: 2.0
-      - 
-        name: Human Service
-        url: http://petstore.swagger.io/v2/swagger.json
+        name: Calendar Service
+        url: /specs/calendar-service/groups/default
         version: 2.0
       -
-        name: Zoo Service
-        url: http://petstore.swagger.io/v2/swagger.json
+        name: Tag Service
+        url: /specs/tag-service/groups/api-v1
         version: 2.0
       - 
-        name: Food Service
-        url: http://petstore.swagger.io/v2/swagger.json
+        name: Swagger Aggregate
+        url: /specs/localhost/groups/default
         version: 2.0

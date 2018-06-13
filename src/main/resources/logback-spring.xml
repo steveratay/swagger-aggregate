@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+  <conversionRule conversionWord="clr"
+    converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+
+  <springProperty scope="context" name="appName" source="spring.application.name"/>
+
+  <springProperty scope="context" name="logging.structured" source="logging.structured" defaultValue="true" />
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <if condition='property("logging.structured").contains("false")'>
+      <then>
+        <encoder>
+          <!-- ref: https://logback.qos.ch/manual/layouts.html -->
+          <pattern>%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} [${appName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}] %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}</pattern>
+        </encoder>
+      </then>
+      <else>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+          <providers>
+            <timestamp />
+            <pattern>
+              <pattern>
+                ${JSON_LOGGING_PATTERN_LOGBACK:-{}}
+              </pattern>
+            </pattern>
+          </providers>
+        </encoder>
+      </else>
+    </if>
+  </appender>
+
+  <!-- Other logger levels here -->
+
+  <logger name="biz.te2" level="INFO" />
+  <logger name="org.springframework" level="INFO" />
+
+  <root level="ERROR">
+    <appender-ref ref="STDOUT"/>
+  </root>
+</configuration>

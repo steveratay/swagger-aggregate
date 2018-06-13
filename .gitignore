@@ -1,25 +1,20 @@
-.gradle
-/build/
-!gradle/wrapper/gradle-wrapper.jar
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-
-### IntelliJ IDEA ###
-.idea
-*.iws
+*~
+*.class
+*ackup
+target
+*/target/*
+servicemix-*
+*foo*
+*.orig
 *.iml
-*.ipr
+*.log
+*.log.[0-9]*
+src/main/resources/keystores/extracted.pem
+src/main/resources/keystores/intermediate.p12
 
-### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
+# .idea folder with exclusions
+.idea/libraries
+.idea/sonarlint
+.idea/*.xml
+!.idea/inspectionProfiles
+!.idea/codeStyles
